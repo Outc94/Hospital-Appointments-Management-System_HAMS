@@ -57,3 +57,9 @@ https://cacoo.com/diagrams/Twt5nG3LIfjMLwQ3/2E171?reload_rt=1589319393620_0
 * bcrypt
 * faker
 * semantic-ui-sass
+
+## Skills
+
+* Devise
+* Comment Function
+* Semantic UI
