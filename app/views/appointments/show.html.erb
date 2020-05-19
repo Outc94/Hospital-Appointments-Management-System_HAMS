@@ -23,7 +23,7 @@
         <td><%= @appointment.doctor.phone %></td>
         <td><%= @appointment.patient.phone %></td>
         <td><%= @appointment.date.try(:strftime, '%a, %b %d, %Y') %></td>
-        <td><%= @appointment.time..try(:strftime, "%l:%M %p")  %></td>
+        <td><%= @appointment.time.try(:strftime, "%l:%M %p")  %></td>
       </tr>
 
   </tbody>
