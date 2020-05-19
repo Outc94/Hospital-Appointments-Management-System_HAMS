@@ -1,0 +1,55 @@
+<div class="form-container">
+  <h1>Edit Patient</h1>
+  <hr />
+  <%= form_with(model: @patient, local: true, class: "ui form") do |f| %>
+    <div class="field">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, required: true, autofocus: true, placeholder: "First Name" %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, required: true, placeholder: "Last Name" %>
+    </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true, placeholder: "Email" %>
+    </div>
+    <div class="field">
+      <%= f.label "Date of Birth" %>
+      <%= f.date_field :date_of_birth, required: true, placeholder: "D.O.B." %>
+    </div>
+    <div class="field">
+      <%= f.label :sex %>
+      <%= f.select :sex, ["Male", "Female"], required: true%>
+    </div>
+    <div class="field">
+      <%= f.label :phone %>
+      <%= f.phone_field :phone, required: true, placeholder: "Phone"%>
+    </div>
+    <div class="field">
+      <%= f.label :street %>
+      <%= f.text_field :street, required: true, placeholder: "Street"%>
+    </div>
+    <div class="field">
+      <%= f.label :city %>
+      <%= f.text_field :city, required: true, placeholder: "City"%>
+    </div>
+    <div class="field">
+      <%= f.label :state %>
+      <%= f.text_field :state, required: true, placeholder: "State"%>
+    </div>
+    <div class="field">
+      <%= f.label :zip %>
+      <%= f.number_field :zip, required: true, placeholder: "Zip"%>
+    </div>
+    <div class="field">
+      <%= f.label :language %>
+      <%= f.select :language, ["English", "Japanese", "French", "Spanish",  "Arabic", "Chinese", "Other" ],required: true, placeholder: "Preferred Language" %>
+    </div>
+    <%= f.submit nil, class: "ui green button inverted" %>
+    <%= link_to 'Quit', patients_path, class:"ui button blue inverted" %>
+  <% end %>
+</div>
+<nav class="navbar navbar-expand-lg fixed-bottom navbar-light" style="background-color: #fff;color:black">
+  <a class="navbar-brand" href="#" style="margin:auto">Copyright © 2020 HAMS. ALL RIGHTS RESERVED. </a>
+  </nav>

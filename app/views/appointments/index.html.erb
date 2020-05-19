@@ -1,0 +1,41 @@
+
+<span class="doctor-show-header"><h1>Appointment List</h1><h3>Number of Appointments: <%= @appointments.count %></h3></span>
+
+<%= link_to 'Add Appointment', new_appointment_path, class:"ui button blue inverted" %>
+<%= link_to 'Sort by Date', appointments_path(sort_date: 'true'), class: "ui button blue inverted" %>
+<br />
+<br />
+<hr />
+
+<%= paginate @appointments %>
+<table class="ui celled table">
+  <thead>
+    <th>Patient Name</th>
+    <th>Doctor Name Phone</th>
+    <th>Patient Phone</th>
+    <th>Doctor Phone</th>
+    <th>Appointment Date</th>
+    <th>Appointment Time</th>
+    <% if user_signed_in? && current_user.position == 'Doctor' || current_user.position == 'Secretary' %>
+    <th>Remove</th>
+    <% end %>
+    <th>Show</th>
+  </thead>
+  <tbody>
+    <% @appointments.each do |appt| %>
+      <tr>
+        <td><%= link_to appt.patient.full_name, patient_path(appt.patient), class: "ui basic button"%></td>
+        <td><%= link_to appt.doctor.name, doctor_path(appt.doctor), class: "ui basic button"%></td>
+        <td><%= appt.patient.phone %></td>
+        <td><%= appt.doctor.phone %></td>
+        <td><%= appt.date.try(:strftime, '%a, %b %d, %Y') %></td>
+        <td><%= appt.time.try(:strftime, "%l:%M %p")  %></td>
+        <% if user_signed_in? && current_user.position == 'Doctor' || current_user.position == 'Secretary' %>
+        <td><%= button_to 'Cancel', doctor_appointment_path(appt.doctor_id, appt.id), method: :delete, class:"ui button red inverted" %></td>
+        <% end %>
+        <td><%= link_to 'Show', appointment_path(appt), class:"ui button blue inverted" %>    </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

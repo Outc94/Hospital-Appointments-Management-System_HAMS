@@ -1,0 +1,31 @@
+
+<span class="doctor-show-header"><h1>Doctor <%= @appointment.doctor.name%> and Patient <%= @appointment.patient.full_name%> Appointment</h1></span>
+
+<%= link_to 'Return to Appointment List', appointments_path, class:"ui button blue inverted" %>
+<br />
+<br />
+<hr />
+
+<table class="ui celled table">
+  <thead>
+    <th>Doctor Name</th>
+    <th>Patient Name</th>
+    <th>Doctor Phone</th>
+    <th>Patient Phone</th>
+    <th>Appointment Date</th>
+    <th>Appointment Time</th>
+  </thead>
+  <tbody>
+
+      <tr>
+        <td><%= @appointment.doctor.name%></td>
+        <td><%= @appointment.patient.full_name%></td>
+        <td><%= @appointment.doctor.phone %></td>
+        <td><%= @appointment.patient.phone %></td>
+        <td><%= @appointment.date.try(:strftime, '%a, %b %d, %Y') %></td>
+        <td><%= @appointment.time..try(:strftime, "%l:%M %p")  %></td>
+      </tr>
+
+  </tbody>
+
+</table>

@@ -1,0 +1,118 @@
+<h1>Doctor <%= @doctor.name%></h1>
+<h2 class="ui center aligned blue header">Doctor <%= @doctor.name%>'s Information</h2>
+<table class="ui definition table user-info selectable">
+<tr>
+    <td>Name:</td>
+    <td><%= @doctor.name %></td>
+</tr>
+<tr>
+    <td>Speciality:</td>
+    <td><%= @doctor.speciality %></td>
+</tr>
+<tr>
+    <td>Phone:</td>
+    <td><%= @doctor.phone %></td>
+</tr>
+<tr>
+    <td>Email:</td>
+    <td><%= @doctor.email %></td>
+</tr>
+<tr>
+    <td>Education:</td>
+    <td><%= @doctor.school %></td>
+</tr>
+
+</table>
+<br />
+<br />
+
+<h2 class="ui center aligned blue header">Doctor <%= @doctor.name%>'s Appointments</h2>
+
+    <table class="ui table striped selectable">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>Date</th>
+                <th>Time</th>
+                <% if user_signed_in? && current_user.position == 'Secretary' %>
+                <th>Cancel</th>
+                <% end %>
+            </tr>
+        </thead>
+
+        <tbody>
+          <% @appointments.each do |appt| %>
+            <tr>
+              <td><%= link_to appt.patient.full_name, patient_path(appt.patient), class: "ui basic button"%></td>
+              <td><%= appt.patient.age %></td>
+              <td><%= appt.patient.date_of_birth %></td>
+              <td><%= appt.date.try(:strftime, '%a, %b %d, %Y') %></td>
+              <td><%= appt.time.try(:strftime, "%l:%M %p") %></td>
+              <% if user_signed_in? && current_user.position == 'Secretary' %>
+              <td><%= button_to 'Cancel', doctor_appointment_path(appt.doctor_id, appt.id), method: :delete, class:"ui button red inverted" %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+
+     </table>
+
+     <% if user_signed_in? && current_user.position == 'Doctor' %>
+     <div class="notes-container">
+         <h2 class="ui center aligned blue header">Doctor <%= @doctor.name%> <%= @doctor.name[-1] == 's' ? "'  Comments from the Scecretary" : "\'s Comments from the Secretary"%></h2>
+         <p><%= @comments.length <= 0 ? "No Comments found": ""%></p>
+
+         <% @comments.each do |comment|  %>
+             <div class="note">
+                 <p class="message-body"><%= comment.message %></p>
+                 <div class="poster-info">
+                     <%= comment.user.full_name %>
+                     <br />
+                     <%= comment.created_at.strftime("%b %d, %Y") %>
+                     <br />
+                     <%= comment.created_at.strftime("%l:%M %p") %>
+                 </div>
+                 <div class="note-actions">
+                     <%= button_to doctor_comment_path(comment.doctor, comment), method: :delete do %>
+                         <i class="trash alternate icon trash"></i>
+                     <% end %>
+
+                 </div>
+
+             </div>
+         <% end %>
+          <% end %>
+          <% if user_signed_in? && current_user.position == 'Secretary' %>
+          <div class="notes-container">
+              <h2 class="ui center aligned blue header">Doctor <%= @doctor.name%> <%= @doctor.name[-1] == 's' ? "'  Comments from the Scecretary" : "\'s Comments from the Secretary"%></h2>
+              <p><%= @comments.length <= 0 ? "No Comments found": ""%></p>
+
+              <% @comments.each do |comment|  %>
+                  <div class="note">
+                      <p class="message-body"><%= comment.message %></p>
+                      <div class="poster-info">
+                          <%= comment.user.full_name %>
+                          <br />
+                          <%= comment.created_at.strftime("%b %d, %Y") %>
+                          <br />
+                          <%= comment.created_at.strftime("%l:%M %p") %>
+                      </div>
+                      <div class="note-actions">
+                          <%= link_to edit_doctor_comment_path(comment.doctor_id, comment), :edit => 'go' do %>
+                              <i class="edit outline icon"></i>
+                          <% end %>
+                          <%= button_to doctor_comment_path(comment.doctor, comment), method: :delete do %>
+                              <i class="trash alternate icon trash"></i>
+                          <% end %>
+
+                      </div>
+
+                  </div>
+              <% end %>
+              <%= link_to "Add Comment", new_doctor_comment_path(@doctor), class:"ui button blue" %>
+               <% end %>
+          <nav class="navbar navbar-expand-lg fixed-bottom navbar-light" style="background-color: #fff;color:black">
+            <a class="navbar-brand" href="#" style="margin:auto">Copyright © 2020 HAMS. ALL RIGHTS RESERVED. </a>
+            </nav>

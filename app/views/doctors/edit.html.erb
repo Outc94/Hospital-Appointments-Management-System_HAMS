@@ -1,0 +1,30 @@
+<div class="form-container">
+  <h1>Edit Doctor</h1>
+  <%= form_with(model: @doctor, local: true, class: "ui form" ) do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true, placeholder: "Doctor Name" %>
+    </div>
+    <div class="field">
+      <%= f.label :phone %>
+      <%= f.phone_field :phone, required: true, placeholder: "Phone" %>
+    </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true, placeholder: "Email" %>
+    </div>
+    <div class="field">
+      <%= f.label :school %>
+      <%= f.text_field :school, required: true, placeholder: "School" %>
+    </div>
+    <div class="field">
+      <%= f.label :speciality %>
+      <%= f.select :speciality, ["Allergy & Immunology", "Anesthesiology", "Dermatology", "Diagnostic Radiology", "Emergency Medicine", "Family Medicine", "Internal Medicine", "Medical Genetics", "Neurology", "Nuclear Medicine", "Obstetrics and Gynecology", "Ophthalmology", "Pathology", "Pediatrics", "Physical Medicine & Rehabilation", "Preventice Medicine", "Psychiatry", "Radiation Oncology", "Surgery", "Urology"]%>
+    </div>
+    <%= f.submit nil, class: "ui green button inverted" %>
+  <% end %>
+  <%= link_to 'Quit', doctors_path, class:"ui button blue inverted" %>
+</div>
+<nav class="navbar navbar-expand-lg fixed-bottom navbar-light" style="background-color: #fff;color:black">
+  <a class="navbar-brand" href="#" style="margin:auto">Copyright © 2020 HAMS. ALL RIGHTS RESERVED. </a>
+  </nav>

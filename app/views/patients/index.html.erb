@@ -1,0 +1,92 @@
+<div class="ui search"><%= search_form_for @search do |f| %>
+  <div class="ui icon input">
+    <%= f.text_field :last_name_cont, placeholder: "Search by Last Name...", class:"prompt"%>
+    <i class="search icon"></i>
+  </div>
+  <div class="results"></div>
+</div>
+<%= f.submit nil, class: "ui green button inverted" %>
+<% end %>
+<% if user_signed_in? && current_user.position == 'Doctor' || current_user.position == 'Secretary' %>
+<span class="doctor-show-header"><h1>Patient List</h1><h3>Number of Patients:  <%= @patients.count %></h3></span>
+<%= link_to 'Add Patient', new_patient_path, class:"ui button blue inverted"%>
+
+<br />
+<br />
+<hr />
+<%= paginate @patients %>
+<table class="ui celled table selectable striped padded">
+  <thead>
+    <th class="center aligned">Patient Name</th>
+    <th class="center aligned">Age</th>
+    <th class="center aligned">Date of Birth</th>
+    <th class="center aligned">Sex</th>
+    <th class="center aligned">Phone</th>
+    <th class="center aligned">City</th>
+    <th class="center aligned">State</th>
+    <th class="center aligned">Zip</th>
+    <th class="center aligned">Preferred Language</th>
+    <th class="center aligned">Remove</th>
+    <% if user_signed_in? && current_user.position == 'Secretary' %>
+    <th class="center aligned">Edit</th>
+    <% end %>
+  </thead>
+  <tbody>
+    <% @patients.each do |patient| %>
+      <tr>
+        <td><%= link_to patient.full_name, patient_path(patient), class: "ui basic button" %></td>
+        <td><%= patient.age %></td>
+        <td><%= patient.date_of_birth %></td>
+        <td><%= patient.sex == "Male" ? "M" : "F" %></td>
+        <td><%= patient.phone %></td>
+        <td><%= patient.city %></td>
+        <td><%= patient.state %></td>
+        <td><%= patient.zip %></td>
+        <td><%= patient.language %></td>
+        <td><%= button_to 'Remove', {:controller => :patients, :action => 'destroy', :id => patient.id }, :method => :delete, class:"ui button red inverted" %></td>
+        <% if user_signed_in? && current_user.position == 'Secretary' %>
+        <td><%= link_to 'Edit', edit_patient_path(patient), class:"ui button blue inverted" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @patients %>
+<% end %>
+<% if user_signed_in? && current_user.position == 'Patient' %>
+<span class="doctor-show-header"><h1>Patient List</h1><h3>Number of Patients:  <%= @patients.count %></h3></span>
+<%= link_to 'Add Patient', new_patient_path, class:"ui button blue inverted"%>
+
+<br />
+<br />
+<hr />
+<%= paginate @patients %>
+<table class="ui celled table selectable striped padded">
+  <thead>
+    <th class="center aligned">Patient Name</th>
+    <th class="center aligned">Sex</th>
+    <th class="center aligned">Phone</th>
+    <th class="center aligned">City</th>
+    <th class="center aligned">State</th>
+    <th class="center aligned">Zip</th>
+    <th class="center aligned">Preferred Language</th>
+  </thead>
+  <tbody>
+    <% @patients.each do |patient| %>
+      <tr>
+        <td><%= link_to patient.full_name, patient_path(patient), class: "ui basic button" %></td>
+        <td><%= patient.sex == "Male" ? "M" : "F" %></td>
+        <td><%= patient.phone %></td>
+        <td><%= patient.city %></td>
+        <td><%= patient.state %></td>
+        <td><%= patient.zip %></td>
+        <td><%= patient.language %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @patients %>
+<% end %>
+<nav class="navbar navbar-expand-lg fixed-bottom navbar-light" style="background-color: #fff;color:black">
+  <a class="navbar-brand" href="#" style="margin:auto">Copyright © 2020 HAMS. ALL RIGHTS RESERVED. </a>
+  </nav>

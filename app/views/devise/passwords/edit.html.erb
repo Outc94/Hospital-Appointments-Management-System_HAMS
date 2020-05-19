@@ -1,0 +1,30 @@
+<div class="log-in-container">
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, class: "ui form") do |f| %>
+<%= image_tag("logo.png",class:"logo") %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="field">
+    <br />
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <% end %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "Your New Password", required: true, class:"input" %>
+  </div>
+
+  <div class="field">
+    <br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm New Password", required: true, class:"input" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Change my password", class: "submit" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+<nav class="navbar navbar-expand-lg fixed-bottom navbar-light" style="background-color: #fff;color:black">
+  <a class="navbar-brand" href="#" style="margin:auto">Copyright © 2020 HAMS. ALL RIGHTS RESERVED. </a>
+  </nav>
