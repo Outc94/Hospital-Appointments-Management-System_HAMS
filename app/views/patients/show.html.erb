@@ -88,7 +88,7 @@
 <% if user_signed_in? && current_user.position == 'Doctor'  %>
 <div class="notes-container">
     <h2 class="ui center aligned blue header"><%= @patient.full_name%> <%= @patient.last_name[-1] == 's' ? "'  Doctor Notes" : "\'s Doctor Notes"%></h2>
-    <p><%= @notes.length <= 0 ? "No patient notes found": ""%></p>
+    <p><%= @notes.length <= 0 ? "No notes found": ""%></p>
 
     <% @notes.each do |note|  %>
         <div class="note">
@@ -118,7 +118,7 @@
     <% if user_signed_in? && current_user.position == 'Patient' || current_user.position == 'Secretary' %>
     <div class="notes-container">
         <h2 class="ui center aligned blue header"><%= @patient.full_name%> <%= @patient.last_name[-1] == 's' ? "'  Doctor Notes" : "\'s Doctor Notes"%></h2>
-        <p><%= @notes.length <= 0 ? "No patient notes found": ""%></p>
+        <p><%= @notes.length <= 0 ? "No notes found": ""%></p>
 
         <% @notes.each do |note|  %>
             <div class="note">
