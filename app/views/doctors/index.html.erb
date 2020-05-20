@@ -29,6 +29,10 @@
     <th class="center aligned">Phone</th>
     <th class="center aligned">Appointments</th>
     <th class="center aligned">Show</th>
+    <% if user_signed_in? && current_user.position == 'Secretary' %>
+    <th class="center aligned">Edit</th>
+    <th class="center aligned">Delete</th>
+    <% end %>
 
   </thead>
   <tbody>
@@ -42,6 +46,10 @@
         <!--<td><%= button_to 'Remove', {:controller => :doctors, :action => 'destroy', :id => doctor.id }, :method => :delete, class:"ui button red inverted" %>
            <%= link_to 'Edit', edit_doctor_path(doctor), class:"ui button blue inverted" %>-->
           <td><%= link_to 'Show', doctor, class:"ui button blue inverted" %>    </td>
+          <% if user_signed_in? && current_user.position == 'Secretary' %>
+           <td><%= link_to 'Edit', edit_doctor_path(doctor), class:"ui button blue inverted" %></td>
+          <td><%= button_to 'Remove', {:controller => :doctors, :action => 'destroy', :id => doctor.id }, :method => :delete, class:"ui button red inverted" %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
