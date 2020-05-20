@@ -25,10 +25,10 @@ Easier appointments between Doctors and Patients as well as records keeping.
 - [ ] Patient edit function
 - [ ] Patient deletion function
 - [ ] Doctors Search function
-  - [ ] Patients should be able to search Doctors by their speciality or name
+  - [ ] Patients should be able to search Doctors by their speciality
 - [ ] Patients Search function
-  - [ ] Doctors should be able to search Patients by their names
-  - [ ] The secretary should be able to search the patients by their name as well
+  - [ ] Doctors should be able to search Patients by their Last names
+  - [ ] The secretary should be able to search the patients by their last names as well
 - [ ] Pagination function
 - [ ] Appointment deletion function
 - [ ] Doctors sort function
