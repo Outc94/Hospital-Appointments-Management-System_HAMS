@@ -23,7 +23,7 @@
     </div>
 
     <div class="field">
-      <%= f.text_field :position, class: "input", placeholder: "Are You a Patient or Doctor", required: true  %>
+      <%= f.select :position, ["Patient", "Doctor"], required: true  %>
     </div>
 
 

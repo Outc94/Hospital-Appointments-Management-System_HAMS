@@ -10,8 +10,7 @@
         <% if user_signed_in? && current_user.position == 'Patient' %>
         <div class="nav-links">
             <%= link_to "Doctors", doctors_path %>
-            <%= link_to 'Patients', patients_path %>
-            <%= link_to 'Appointments', appointments_path%>
+            <%= link_to 'Make an Appointment', new_appointment_path%>
         </div>
         <% end %>
         <% if user_signed_in? && current_user.position == 'Secretary'%>

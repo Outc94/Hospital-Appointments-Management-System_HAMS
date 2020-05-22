@@ -25,6 +25,7 @@
 </table>
 <br />
 <br />
+<% if user_signed_in? && current_user.position == 'Doctor' || current_user.position == 'Secretary' %>
 
 <h2 class="ui center aligned blue header">Doctor <%= @doctor.name%>'s Appointments</h2>
 
@@ -45,7 +46,8 @@
         <tbody>
           <% @appointments.each do |appt| %>
             <tr>
-              <td><%= link_to appt.patient.full_name, patient_path(appt.patient), class: "ui basic button"%></td>
+              <td><%= appt.patient.full_name %></td>
+              <!--<td><%= link_to appt.patient.full_name, patient_path(appt.patient), class: "ui basic button"%></td>
               <td><%= appt.patient.age %></td>
               <td><%= appt.patient.date_of_birth %></td>
               <td><%= appt.date.try(:strftime, '%a, %b %d, %Y') %></td>
@@ -58,7 +60,7 @@
         </tbody>
 
      </table>
-
+  <% end %>
      <% if user_signed_in? && current_user.position == 'Doctor' %>
      <div class="notes-container">
          <h2 class="ui center aligned blue header">Doctor <%= @doctor.name%> <%= @doctor.name[-1] == 's' ? "'  Comments from the Scecretary" : "\'s Comments from the Secretary"%></h2>
