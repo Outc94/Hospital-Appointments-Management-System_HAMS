@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :update, :edit, :destroy]
+  before_action :set_no_access
   def index
     #@patients = Patient.all.order("last_name")
       @patients = Patient.order(:last_name).page params[:page]
@@ -52,4 +53,10 @@ class PatientsController < ApplicationController
     def patient_params
       params.require(:patient).permit(:first_name, :last_name, :age, :date_of_birth, :language, :sex, :phone, :street, :city, :state, :zip, :email)
     end
+
+    def set_no_access
+     if current_user.position == "Patient"
+       redirect_to doctors_path,  notice: "You don't have access to that URL"
+     end
+   end
 end

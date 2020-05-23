@@ -2,6 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
   before_action :set_doctors, only: [:new, :create]
   before_action :set_patients, only: [:new, :create]
+  before_action :set_no_access, only: [:index, :show]
 
   def index
     @appointments = Appointment.all.order(:date, :time)
@@ -65,4 +66,10 @@ class AppointmentsController < ApplicationController
     def appointment_params
       params.require(:appointment).permit(:patient_id, :doctor_id, :date, :time)
     end
+
+    def set_no_access
+     if current_user.position == "Patient"
+       redirect_to doctors_path,  notice: "You don't have access to that URL"
+     end
+   end
 end
