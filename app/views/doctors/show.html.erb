@@ -46,8 +46,7 @@
         <tbody>
           <% @appointments.each do |appt| %>
             <tr>
-              <td><%= appt.patient.full_name %></td>
-              <!--<td><%= link_to appt.patient.full_name, patient_path(appt.patient), class: "ui basic button"%></td>
+              <td><%= link_to appt.patient.full_name, patient_path(appt.patient), class: "ui basic button"%></td>
               <td><%= appt.patient.age %></td>
               <td><%= appt.patient.date_of_birth %></td>
               <td><%= appt.date.try(:strftime, '%a, %b %d, %Y') %></td>
