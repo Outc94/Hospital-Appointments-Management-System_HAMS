@@ -40,12 +40,12 @@ class AppointmentsController < ApplicationController
 
   def destroy
     @appointment.destroy
-    doctor = @appointment.doctor
-    patient = @appointment.patient
-    if @appointment.destroy
-      AppointmentMailer.mail_doctors(doctor).deliver
-      AppointmentMailer.mail_patients(patient).deliver
-    end
+  #  doctor = @appointment.doctor
+  #  patient = @appointment.patient
+  #  if @appointment.destroy
+  #    AppointmentMailer.mail_doctors(doctor).deliver
+  #    AppointmentMailer.mail_patients(patient).deliver
+  #  end
     redirect_to appointments_path
   end
 
