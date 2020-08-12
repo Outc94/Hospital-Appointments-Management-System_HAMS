@@ -1,7 +1,7 @@
-# Hospital Appointments Management System (HAMS)
+# [Hospital Appointments Management System (HAMS)](https://morning-badlands-31060.herokuapp.com/)
 
 ## Overview
-HAMS is a system that manages doctors and patients appointments online. It also helps keeping patients record for historical purposes.
+[HAMS](https://morning-badlands-31060.herokuapp.com/) is a system that manages doctors and patients appointments online. It also helps keeping patients record for historical purposes.
 
 ## Concept
 Easier appointments between Doctors and Patients as well as records keeping.
@@ -25,7 +25,7 @@ Easier appointments between Doctors and Patients as well as records keeping.
 - [ ] Patient edit function
 - [ ] Patient deletion function
 - [ ] Doctors Search function
-  - [ ] Patients should be able to search Doctors by their speciality
+  - [ ] Patients should be able to search Doctors by their specialities
 - [ ] Patients Search function
   - [ ] Doctors should be able to search Patients by their Last names
   - [ ] The secretary should be able to search the patients by their last names as well
