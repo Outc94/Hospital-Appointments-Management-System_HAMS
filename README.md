@@ -1,7 +1,7 @@
-# [Hospital Appointments Management System (HAMS)](https://morning-badlands-31060.herokuapp.com/)
+# [Hospital Appointments Management System (HAMS)](http://34.200.183.98/users/sign_in)
 
 ## Overview
-[HAMS](https://morning-badlands-31060.herokuapp.com/) is a system that manages doctors and patients appointments online. It also helps keeping patients record for historical purposes.
+[HAMS](http://34.200.183.98/users/sign_in) is a system that manages doctors and patients appointments online. It also helps keeping patients record for historical purposes.
 
 ## Concept
 Easier appointments between Doctors and Patients as well as records keeping.
