@@ -27,6 +27,11 @@ group :development, :test do
   gem "database_cleaner"
   gem "launchy"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capistrano', '3.6.0' # set of tools for capistrano
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 
 
 end
@@ -46,3 +51,7 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'dotenv-rails' # Required to manipulate environment variables in the development environment
+gem 'unicorn' # Application server unicorn
+gem 'mini_racer', platforms: :ruby # Required at deployment

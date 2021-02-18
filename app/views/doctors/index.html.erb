@@ -56,6 +56,21 @@
 
 </table>
 <%= paginate @doctors %>
+
+<h2>User</h2>
+<% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+    <li>
+      <div class="item">
+        <%= link_to user.full_name %>
+        <%= link_to 'message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+
+      </div>
+    </li>
+
+  <% end %>
+<% end %>
+
 <nav class="navbar navbar-expand-lg fixed-bottom navbar-light" style="background-color: #fff;color:black">
   <a class="navbar-brand" href="#" style="margin:auto">Copyright © 2020 HAMS. ALL RIGHTS RESERVED. </a>
   </nav>

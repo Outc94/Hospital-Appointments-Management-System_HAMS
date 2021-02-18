@@ -1,0 +1,36 @@
+<% if @over_ten %>
+  <%= link_to 'Previous messages', '?m=all' %>
+<% end %>
+<div class="ui segment">
+  <% @messages.each do |message| %>
+    <% if message.body.present? %>
+      <div class="item">
+        <div class="content">
+          <div class="header"><strong><%= message.user.full_name %></strong> <%= message.message_time %></div>
+          <div class="list">
+            <div class="item">
+              <i class="right triangle icon"></i>
+              <%= message.body %> /
+              <% if message.user == current_user %>
+                <%= message.read ? 'Already read' : 'Unread' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<%= form_with(model: [@conversation, @message]) do |f| %>
+  <div class="field">
+    <%= f.text_area :body, required: true, placeholder: "Message", rows: 10, autofocus: true %>
+  </div>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div>
+    <%= f.submit "send a message", class: "ui blue button" %>
+  </div>
+<% end %>
+
+<nav class="navbar navbar-expand-lg fixed-bottom navbar-light" style="background-color: #fff;color:black">
+  <a class="navbar-brand" href="#" style="margin:auto">Copyright © 2020 HAMS. ALL RIGHTS RESERVED. </a>
+  </nav>

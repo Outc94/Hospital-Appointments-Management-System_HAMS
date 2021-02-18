@@ -2,6 +2,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :update, :edit, :destroy]
   before_action :set_no_access
   def index
+    @users = User.all
     #@patients = Patient.all.order("last_name")
       @patients = Patient.order(:last_name).page params[:page]
       @search = Patient.all.ransack(params[:q])

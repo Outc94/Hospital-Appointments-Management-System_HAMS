@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :patients, through: :notes
   has_many :doctors, through: :comments
   has_many :doctors, through: :appointments
+  has_many :messages, dependent: :destroy
 
 
   def full_name

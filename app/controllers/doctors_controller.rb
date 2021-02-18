@@ -2,6 +2,7 @@ class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :update, :edit, :destroy]
 
   def index
+    @users = User.all
     @doctors = Doctor.order(:name).page params[:page]
     @search = Doctor.all.ransack(params[:q])
     if params[:q]

@@ -25,4 +25,8 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  resources :conversations do
+    resources :messages
+  end
+
 end
