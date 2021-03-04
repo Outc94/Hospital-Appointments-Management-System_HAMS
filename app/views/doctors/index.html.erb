@@ -56,7 +56,9 @@
 
 </table>
 <%= paginate @doctors %>
-
+<% if user_signed_in? && current_user.position == 'Secretary' %>
+<%= pie_chart Doctor.group(:speciality).count %>
+<% end %>
 
 <nav class="navbar navbar-expand-lg fixed-bottom navbar-light" style="background-color: #fff;color:black">
   <a class="navbar-brand" href="#" style="margin:auto">Copyright © 2020 HAMS. ALL RIGHTS RESERVED. </a>

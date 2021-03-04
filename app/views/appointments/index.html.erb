@@ -39,3 +39,4 @@
   </tbody>
 
 </table>
+<%= column_chart Appointment.group_by_day_of_week(:date, format: "%a").count %>
