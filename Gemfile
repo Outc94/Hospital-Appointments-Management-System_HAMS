@@ -57,5 +57,5 @@ gem 'unicorn' # Application server unicorn
 gem 'mini_racer', platforms: :ruby # Required at deployment
 gem "chartkick"
 gem 'groupdate'
-gem 'ed25519'
-gem 'bcrypt_pbkdf'
+#gem 'ed25519'
+#gem 'bcrypt_pbkdf'
